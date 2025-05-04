@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Laravel\WorkOS\Http\Requests\AuthKitAccountDeletionRequest;
 
 class ProfileController extends Controller
 {
+    public function getAllUsers()
+    {
+        $users = User::all();
+        $userCount = $users->count();
+        return Inertia::render('dashboard', [
+            'userCount' => $userCount,
+        ]);
+    }
+
+
     /**
      * Show the user's profile settings page.
      */
