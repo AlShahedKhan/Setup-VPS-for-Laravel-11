@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\categories\CategoryController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Settings\ProfileController;
@@ -18,6 +19,8 @@ Route::middleware([
     // })->name('dashboard');
     Route::get('dashboard', [ProfileController::class, 'getAllUsers'])->name('dashboard');
 
+    Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
 });
 
 
